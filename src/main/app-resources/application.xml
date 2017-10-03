@@ -1,31 +1,106 @@
-<?xml version="1.0" encoding="us-ascii"?>
-<application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="application">
-  <jobTemplates>
-    <jobTemplate id="template_A">
+<?xml version="1.0" encoding="UTF-8"?>
+<application id="dcs-noc-ales-coast">
+     
+    <jobTemplates>  
+     <jobTemplate id="template_A">
       <streamingExecutable>/application/node_A/run.sh</streamingExecutable>
-    </jobTemplate>
-    <jobTemplate id="template_B">
-      <streamingExecutable>/application/node_B/run.sh</streamingExecutable>
-      <defaultJobconf>
+      <defaultParameters>           
+        <parameter id="startdate" title="Start date" abstract="Start date of the requested data used as queryable for the catalogue" scope="runtime" type="opensearch" target="time:start" maxOccurs="1">2009-04-26T08:52:29.000</parameter>
+        <parameter id="enddate" title="End date" abstract="End date of the requested data used as queryable for the catalogue" scope="runtime" type="opensearch" target="time:end" maxOccurs="1">2009-04-26T09:22:29.000</parameter>
+        <parameter id="qbbox" title="Bounding Box (lon_min,lat_min,lon_max,lat_max)" abstract="The bounding box parameter" scope="runtime" type="opensearch" target="geo:box" maxOccurs="1">-13.12,40.95,-8.21,46.81</parameter>
+        <parameter id="distant_limits" title="Distance limits (km)" abstract="Distance limits to the coast" scope="runtime" maxOccurs="1">-10,1000</parameter>
+        <parameter id="ionosphere" title="Ionospheric Correction" abstract="ionospheric correction" scope="runtime" maxOccurs="1">
+          <options>
+           <option>iono_gim</option>
+           <option>iono_alt_smooth</option>
+           <option>iono_alt</option>
+           <option>iono_alt_mle3</option>
+           <option>iono_alt_smooth_mle3</option>
+           <option>iono_iri2007</option>
+           <option>iono_nic09</option>
+           <default>iono_gim</default>
+          </options>
+        </parameter>    
+        <parameter id="dry_tropo" title="Dry Tropospheric Correction" abstract="dry tropospheric correction" scope="runtime" maxOccurs="1">
+          <options>
+           <option>dry_tropo_era</option>
+           <option>dry_tropo_ecmwf</option>
+           <option>dry_tropo_ncep</option>
+           <default>dry_tropo_era</default>
+          </options>
+        </parameter>
+        <parameter id="wet_tropo" title="Wet Tropospheric Correction" abstract="wet tropospheric correction" scope="runtime" maxOccurs="1">
+          <options>
+           <option>wet_tropo_era</option>
+           <option>wet_tropo_ecmwf</option>
+           <option>wet_tropo_rad</option>
+           <option>wet_tropo_ncep</option>
+           <default>wet_tropo_era</default>
+          </options>
+        </parameter>
+        <parameter id="inv_bar" title="Inverse Barometer Correction" abstract="inverse barometer correction" scope="runtime" maxOccurs="1">
+          <options>
+           <option>inv_bar_mog2d</option>
+           <option>inv_bar_mog2d_mean</option>
+           <option>inv_bar_static</option>
+           <option>inv_bar_global</option>
+           <default>inv_bar_mog2d</default>
+          </options>
+        </parameter>
+        <parameter id="ssb" title="Sea State Bias Correction" abstract="sea state bias" scope="runtime" maxOccurs="1">
+          <options>
+           <option>ssb_tran2012</option>
+           <option>ssb_cls</option>
+           <option>ssb_cls_mle3</option>
+           <default>ssb_tran2012</default>
+          </options>
+        </parameter>
+        <parameter id="tide_ocean" title="Ocean Tide" abstract="ocean tide" scope="runtime" maxOccurs="1"> 
+          <options>
+           <option>tide_ocean_fes12</option>
+           <option>tide_ocean_got410</option>
+           <option>tide_ocean_got48</option>
+           <option>tide_ocean_fes04</option>
+           <option>tide_ocean_webtide</option>
+           <default>tide_ocean_fes12</default>
+          </options>
+        </parameter>
+        <parameter id="tide_load" title="Load Tide" abstract="load tide" scope="runtime" maxOccurs="1">
+          <options>
+           <option>tide_load_got410</option>
+           <option>tide_load_fes04</option>
+           <option>tide_load_got48</option>
+           <default>tide_load_got410</default>
+          </options>
+        </parameter>
+  </defaultParameters>   
+  <defaultJobconf>
+      <property id="mapred.task.timeout">1800000</property>
+      </defaultJobconf> 
+   </jobTemplate>
+</jobTemplates>
+  <!--  <jobTemplate id="template_B">
+      <streamingExecutable>/application/node_B/run.sh</streamingExecutable> 
+      <defaultJobconf> -->
         <!-- By setting this property with value 1, the node will act as 'aggregator.
              That is only one instance of the node will run on the cluster -->
-        <property id="ciop.job.max.tasks">1</property>
+<!--         <property id="mapred.task.timeout">1800000</property>
+	 <property id="ciop.job.max.tasks">1</property>
       </defaultJobconf>
-    </jobTemplate>
-  </jobTemplates>
-    <workflow id="workflow" title="Simple workflow" abstract="Simple workflow based on the DCS Bash archetype">
+    </jobTemplate> -->
+    <workflow id="workflow" title="ALES Processor Test Version" abstract="ALES Processor test based on the DCS Bash archetype testing">
     <workflowVersion>1.0</workflowVersion>
     <node id="node_A">
-      <job id="template_A"/>
+      <job id="template_A"/> 
       <sources>
-        <source id="source" title="Simple string sources" abstract="List of comma-separated strings" refid="string:list" scope="runtime">input-1,input-2,input-3</source>
+<source refid="cas:series" >https://catalog.terradue.com/jason2/series/GPS/description</source>
       </sources>
-    </node>
+<!--     </node>
     <node id="node_B">
-      <job id="template_B"/>
+      <job id="template_B"/> 
       <sources>
         <source refid="wf:node">node_A</source>
-      </sources>
+      </sources> --> 
     </node>
   </workflow>
 </application>
