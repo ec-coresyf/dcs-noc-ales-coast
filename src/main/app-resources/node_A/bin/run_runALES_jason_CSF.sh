@@ -27,7 +27,7 @@ else
       args="${args} \"${token}\"" 
       shift
   done
-  eval "\"${exe_dir}/ALESrun_jason_CSF\"" $args
+  eval "\"${exe_dir}/runALES_jason_CSF\"" $args
 fi
 exit
 
