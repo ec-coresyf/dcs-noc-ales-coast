@@ -5,8 +5,8 @@
      <jobTemplate id="template_A">
       <streamingExecutable>/application/node_A/run.sh</streamingExecutable>
       <defaultParameters>           
-        <parameter id="startdate" title="Start date" abstract="Start date of the requested data used as queryable for the catalogue" scope="runtime" type="opensearch" target="time:start" maxOccurs="1">2009-04-26T08:52:29.000</parameter>
-        <parameter id="enddate" title="End date" abstract="End date of the requested data used as queryable for the catalogue" scope="runtime" type="opensearch" target="time:end" maxOccurs="1">2009-04-26T09:22:29.000</parameter>
+        <!--<parameter id="startdate" title="Start date" abstract="Start date of the requested data used as queryable for the catalogue" scope="runtime" type="opensearch" target="time:start" maxOccurs="1">2009-04-26T08:52:29.000</parameter>
+        <parameter id="enddate" title="End date" abstract="End date of the requested data used as queryable for the catalogue" scope="runtime" type="opensearch" target="time:end" maxOccurs="1">2009-04-26T09:22:29.000</parameter> -->
         <parameter id="qbbox" title="Bounding Box (lon_min,lat_min,lon_max,lat_max)" abstract="The bounding box parameter" scope="runtime" type="opensearch" target="geo:box" maxOccurs="1">-13.12,40.95,-8.21,46.81</parameter>
         <parameter id="Mission" title="Mission Name" abstract="Mission Name">j1</parameter>
 	<parameter id="distant_limits" title="Distance limits (km)" abstract="Distance limits to the coast" scope="runtime" maxOccurs="1">-10,1000</parameter>
