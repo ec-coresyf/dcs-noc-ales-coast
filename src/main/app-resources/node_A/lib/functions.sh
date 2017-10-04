@@ -8,8 +8,8 @@ ERR_PUBLISH=55
 echo program "started"
 source ${ciop_job_include}
 
-MATLAB_LAUNCHER=$_CIOP_APPLICATION_PATH/node_A/bin/run_ALESrun_jason_CSF.sh
-MATLAB_CMD=$_CIOP_APPLICATION_PATH/node_A/bin/ALESrun_jason_CSF
+MATLAB_LAUNCHER=$_CIOP_APPLICATION_PATH/node_A/bin/run_runALES_jason_CSF.sh
+MATLAB_CMD=$_CIOP_APPLICATION_PATH/node_A/bin/runALES_jason_CSF
 MATLAB_RUNTIME=/data/v90
 #RADS=/home/ndayoub/ALES_RUN/
 RADS=https://store.terradue.com/api/rads/data/
