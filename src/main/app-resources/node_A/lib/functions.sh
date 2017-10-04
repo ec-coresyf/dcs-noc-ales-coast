@@ -114,7 +114,8 @@ function main ()
    retrieved=$( ciop-copy -o $TMPDIR $enclosure )        
    local_input=$retrieved
 
-mission="j2"
+# get the mission name
+   mission="$( ciop-getparam Mission )"
 # pass arguments and run matlab code (note: $TMPDIR is passed to the code to contain the output files)
    cmd="$MATLAB_LAUNCHER $MATLAB_RUNTIME $mission $lat_min $lat_max $dist_min $dist_max $local_input $RADS $TMPDIR "$iono" "$dry" "$wet" "$ib" "$sb" "$ocean" "$load""
    eval $cmd 1>&2
