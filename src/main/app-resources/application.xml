@@ -8,7 +8,7 @@
         <parameter id="startdate" title="Start date" abstract="Start date of the requested data used as queryable for the catalogue" scope="runtime" type="opensearch" target="time:start" maxOccurs="1">2009-04-26T08:52:29.000</parameter>
         <parameter id="enddate" title="End date" abstract="End date of the requested data used as queryable for the catalogue" scope="runtime" type="opensearch" target="time:end" maxOccurs="1">2009-04-26T09:22:29.000</parameter>
         <parameter id="qbbox" title="Bounding Box (lon_min,lat_min,lon_max,lat_max)" abstract="The bounding box parameter" scope="runtime" type="opensearch" target="geo:box" maxOccurs="1">-13.12,40.95,-8.21,46.81</parameter>
-        <parameter id="Mission" title="Mission Name" abstract="Mission Name" />
+        <parameter id="Mission" title="Mission Name" abstract="Mission Name">j3</parameter>
 	<parameter id="distant_limits" title="Distance limits (km)" abstract="Distance limits to the coast" scope="runtime" maxOccurs="1">-10,1000</parameter>
         <parameter id="ionosphere" title="Ionospheric Correction" abstract="ionospheric correction" scope="runtime" minOccurs="0" maxOccurs="1">
           <options>
@@ -89,12 +89,12 @@
 	 <property id="ciop.job.max.tasks">1</property>
       </defaultJobconf>
     </jobTemplate> -->
-    <workflow id="workflow" title="ALES Processor V1" abstract="ALES Processor for Coastal Altimetry">
+    <workflow id="workflow" title="ALES Processor for jason3 V1" abstract="ALES Processor for for jason3 Coastal Altimetry">
     <workflowVersion>1.0</workflowVersion>
     <node id="node_A">
       <job id="template_A"/> 
       <sources>
-<source refid="string:list" id="input_ref" title="SGDR data files" abstract="url to the SGDR NetCDF files" scope="runtime" ></source>
+<source refid="string:list" id="input_ref" title="SGDR jason3 data files" abstract="url to the jason3 SGDR NetCDF files" scope="runtime" ></source>
       </sources>
 <!--     </node>
     <node id="node_B">
