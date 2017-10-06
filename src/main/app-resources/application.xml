@@ -15,8 +15,6 @@
            <option>iono_gim</option>
            <option>iono_alt_smooth</option>
            <option>iono_alt</option>
-           <option>iono_alt_mle3</option>
-           <option>iono_alt_smooth_mle3</option>
            <option>iono_iri2007</option>
            <option>iono_nic09</option>
            <default>iono_gim</default>
@@ -27,6 +25,7 @@
            <option>dry_tropo_era</option>
            <option>dry_tropo_ecmwf</option>
            <option>dry_tropo_ncep</option>
+           <option>dry-tropo_airtide</option>
            <default>dry_tropo_era</default>
           </options>
         </parameter>
@@ -52,7 +51,6 @@
           <options>
            <option>ssb_tran2012</option>
            <option>ssb_cls</option>
-           <option>ssb_cls_mle3</option>
            <default>ssb_tran2012</default>
           </options>
         </parameter>
@@ -62,7 +60,6 @@
            <option>tide_ocean_got410</option>
            <option>tide_ocean_got48</option>
            <option>tide_ocean_fes04</option>
-           <option>tide_ocean_webtide</option>
            <default>tide_ocean_fes12</default>
           </options>
         </parameter>
