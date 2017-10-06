@@ -10,22 +10,23 @@
         <parameter id="qbbox" title="Bounding Box (lon_min,lat_min,lon_max,lat_max)" abstract="The bounding box parameter" scope="runtime" type="opensearch" target="geo:box" maxOccurs="1">-13.12,40.95,-8.21,46.81</parameter>
         <parameter id="Mission" title="Mission Name" abstract="Mission Name">j3</parameter>
 	<parameter id="distant_limits" title="Distance limits (km)" abstract="Distance limits to the coast" scope="runtime" maxOccurs="1">-10,1000</parameter>
-        <parameter id="ionosphere" title="Ionospheric Correction" abstract="ionospheric correction" scope="runtime" minOccurs="0" maxOccurs="1">
+<parameter id="ionosphere" title="Ionospheric Correction" abstract="ionospheric correction" scope="runtime" minOccurs="0" maxOccurs="1">
           <options>
            <option>iono_gim</option>
            <option>iono_alt_smooth</option>
            <option>iono_alt</option>
+           <option>iono_alt_mle3</option>
+           <option>iono_alt_smooth_mle3</option>
            <option>iono_iri2007</option>
            <option>iono_nic09</option>
            <default>iono_gim</default>
           </options>
-        </parameter>    
+        </parameter>
         <parameter id="dry_tropo" title="Dry Tropospheric Correction" abstract="dry tropospheric correction" scope="runtime" minOccurs="0" maxOccurs="1">
           <options>
            <option>dry_tropo_era</option>
            <option>dry_tropo_ecmwf</option>
            <option>dry_tropo_ncep</option>
-           <option>dry-tropo_airtide</option>
            <default>dry_tropo_era</default>
           </options>
         </parameter>
@@ -51,15 +52,17 @@
           <options>
            <option>ssb_tran2012</option>
            <option>ssb_cls</option>
+           <option>ssb_cls_mle3</option>
            <default>ssb_tran2012</default>
           </options>
         </parameter>
-        <parameter id="tide_ocean" title="Ocean Tide" abstract="ocean tide" scope="runtime" minOccurs="0" maxOccurs="1"> 
+        <parameter id="tide_ocean" title="Ocean Tide" abstract="ocean tide" scope="runtime" minOccurs="0" maxOccurs="1">
           <options>
            <option>tide_ocean_fes12</option>
            <option>tide_ocean_got410</option>
            <option>tide_ocean_got48</option>
            <option>tide_ocean_fes04</option>
+           <option>tide_ocean_webtide</option>
            <default>tide_ocean_fes12</default>
           </options>
         </parameter>
@@ -71,10 +74,10 @@
            <default>tide_load_got410</default>
           </options>
         </parameter>
-  </defaultParameters>   
+  </defaultParameters>
   <defaultJobconf>
       <property id="mapred.task.timeout">1800000</property>
-      </defaultJobconf> 
+      </defaultJobconf>
    </jobTemplate>
 </jobTemplates>
   <!--  <jobTemplate id="template_B">
