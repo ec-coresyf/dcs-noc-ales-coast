@@ -89,7 +89,7 @@
 	 <property id="ciop.job.max.tasks">1</property>
       </defaultJobconf>
     </jobTemplate> -->
-    <workflow id="workflow" title="ALES Processor for jason3 V1" abstract="ALES Processor for for jason3 Coastal Altimetry">
+    <workflow id="workflow" title="ALES Processor for jason3 V1" abstract="ALES Processor for jason3 Coastal Altimetry">
     <workflowVersion>1.0</workflowVersion>
     <node id="node_A">
       <job id="template_A"/> 
