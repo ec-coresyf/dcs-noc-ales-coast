@@ -91,7 +91,7 @@
     <node id="node_A">
       <job id="template_A"/> 
       <sources>
-<source refid="string:list" id="input_ref" title="SGDR jason1 data files" abstract="url to the jason1 SGDR NetCDF files" scope="runtime" ></source>
+<source refid="string:list" id="input_ref" title="jason1 SGDR data files" abstract="url to the jason1 SGDR NetCDF files" scope="runtime" ></source>
       </sources>
 <!--     </node>
     <node id="node_B">
