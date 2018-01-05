@@ -25,7 +25,6 @@
            <option>dry_tropo_era</option>
            <option>dry_tropo_ecmwf</option>
            <option>dry_tropo_ncep</option>
-           <option>dry-tropo_airtide</option>
            <default>dry_tropo_era</default>
           </options>
         </parameter>
@@ -41,6 +40,7 @@
         <parameter id="inv_bar" title="Inverse Barometer Correction" abstract="inverse barometer correction" scope="runtime" minOccurs="0" maxOccurs="1">
           <options>
            <option>inv_bar_mog2d</option>
+           <option>inv_bar_mog2d_era</option>
            <option>inv_bar_mog2d_mean</option>
            <option>inv_bar_static</option>
            <option>inv_bar_global</option>
@@ -56,19 +56,20 @@
         </parameter>
         <parameter id="tide_ocean" title="Ocean Tide" abstract="ocean tide" scope="runtime" minOccurs="0" maxOccurs="1">
           <options>
-           <option>tide_ocean_fes12</option>
+           <option>tide_ocean_fes14</option>
            <option>tide_ocean_got410</option>
            <option>tide_ocean_got48</option>
            <option>tide_ocean_fes04</option>
-           <default>tide_ocean_fes12</default>
+           <default>tide_ocean_fes14</default>
           </options>
         </parameter>
         <parameter id="tide_load" title="Load Tide" abstract="load tide" scope="runtime" minOccurs="0" maxOccurs="1">
           <options>
+           <option>tide_load_fes14</option>
            <option>tide_load_got410</option>
            <option>tide_load_fes04</option>
            <option>tide_load_got48</option>
-           <default>tide_load_got410</default>
+           <default>tide_load_fes14</default>
           </options>
         </parameter>
   </defaultParameters>
@@ -86,7 +87,7 @@
 	 <property id="ciop.job.max.tasks">1</property>
       </defaultJobconf>
     </jobTemplate> -->
-    <workflow id="workflow" title="ALES Processor for Jason1 V1" abstract="ALES Processor for Jason1 Coastal Altimetry">
+    <workflow id="workflow" title="ALES Processor for Jason1 V1" abstract="This Processor produces SSHA, TWLE, SWH, SIGMA0 from Jason1 mission">
     <workflowVersion>1.0</workflowVersion>
     <node id="node_A">
       <job id="template_A"/> 
