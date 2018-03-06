@@ -45,6 +45,10 @@
                   <goal>rpm</goal>
                 </goals>
                 <configuration>
+                 <postinstallScriptlet combine.self="override">
+                 <scriptFile>${basedir}/src/main/scripts/postinstall</scriptFile>
+                 <fileEncoding>utf-8</fileEncoding>
+                  </postinstallScriptlet>
                   <!-- Set here the dependencies installed with 'sudo yum install'-->
                   <requires>
                     <require>bash</require>
