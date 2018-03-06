@@ -1,4 +1,5 @@
- cd /tmp
+#!/bin/bash 
+cd /tmp
 
  mkdir matlab_runtime_90
 
