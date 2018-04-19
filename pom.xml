@@ -45,6 +45,9 @@
                   <goal>rpm</goal>
                 </goals>
                 <configuration>
+                  <defineStatements combine.children="append">
+                    <defineStatement>__os_install_post %{nil}</defineStatement>
+                  </defineStatements>
                   <postinstallScriptlet combine.self="override">
                   <scriptFile>${basedir}/src/main/scripts/postinstall</scriptFile>
                   <fileEncoding>utf-8</fileEncoding>
