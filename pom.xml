@@ -56,6 +56,7 @@
                   <!-- Set here the dependencies installed with 'sudo yum install'-->
                   <requires>
                     <require>bash</require>
+					<require>wget</require>
                   </requires>
                 </configuration>
               </execution>
