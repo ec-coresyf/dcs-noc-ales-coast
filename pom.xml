@@ -57,6 +57,7 @@
                   <requires>
                     <require>bash</require>
 					<require>wget</require>
+					<require>libXt</require>
                   </requires>
                 </configuration>
               </execution>
