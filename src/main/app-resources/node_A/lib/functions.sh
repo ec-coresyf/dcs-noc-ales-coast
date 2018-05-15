@@ -110,6 +110,12 @@ function main ()
    load="$( ciop-getparam tide_load )"
 
 # get the SGDR files from the catalog search
+
+	ciop-log "INFO" "----------------------------"
+	ciop-log "INFO" "processing input: ${input}"
+	ciop-log "INFO" "opensearch-client $input enclosure"
+	ciop-log "INFO" "ciop-copy -o $TMPDIR $enclosure"
+	ciop-log "INFO" "----------------------------"
    enclosure=$( opensearch-client $input enclosure )    
    retrieved=$( ciop-copy -o $TMPDIR $enclosure )        
    local_input=$retrieved
