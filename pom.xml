@@ -11,7 +11,7 @@
     <version>3.0.0-docker</version>
   </parent>
   <description>test of the ales application</description>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0</version>
   <properties>
     <summary>test of the ales application</summary>
     <description>test of the ales application</description>
@@ -56,6 +56,8 @@
 <!-- Set here the dependencies installed with 'sudo yum install'-->
                   <requires>
                     <require>bash</require>
+                    <require>wget</require>
+                    <require>libXt</require>
                   </requires>
                 </configuration>
               </execution>
