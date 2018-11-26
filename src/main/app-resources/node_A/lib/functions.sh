@@ -8,8 +8,10 @@ ERR_PUBLISH=55
 echo program "started"
 source ${ciop_job_include}
 
-MATLAB_LAUNCHER=$_CIOP_APPLICATION_PATH/node_A/bin/run_runALES_jason_CSF.sh
-MATLAB_CMD=$_CIOP_APPLICATION_PATH/node_A/bin/runALES_jason_CSF
+#MATLAB_LAUNCHER=$_CIOP_APPLICATION_PATH/node_A/bin/run_runALES_jason_CSF.sh
+#MATLAB_CMD=$_CIOP_APPLICATION_PATH/node_A/bin/runALES_jason_CSF
+MATLAB_LAUNCHER=$_CIOP_APPLICATION_PATH/node_A/bin/run_run_ALESrun_jason_CSF.sh
+MATLAB_CMD=$_CIOP_APPLICATION_PATH/node_A/bin/run_ALESrun_jason_CSF
 MATLAB_RUNTIME=/opt/v90
 #RADS=/home/ndayoub/ALES_RUN/
 RADS=https://store.terradue.com/api/rads/data/
@@ -108,15 +110,17 @@ function main ()
    sb="$( ciop-getparam ssb )"
    ocean="$( ciop-getparam tide_ocean )"
    load="$( ciop-getparam tide_load )"
+   ms="$( ciop-getparam mss )"
 
 # get the SGDR files from the catalog search
    enclosure=$( opensearch-client $input enclosure )    
    retrieved=$( ciop-copy -o $TMPDIR $enclosure )        
    local_input=$retrieved
+
 # get the mission name
    mission="$( ciop-getparam Mission )"
 # pass arguments and run matlab code (note: $TMPDIR is passed to the code to contain the output files)
-   cmd="$MATLAB_LAUNCHER $MATLAB_RUNTIME $mission $lat_min $lat_max $dist_min $dist_max $local_input $RADS $TMPDIR "$iono" "$dry" "$wet" "$ib" "$sb" "$ocean" "$load""
+   cmd="$MATLAB_LAUNCHER $MATLAB_RUNTIME $mission $lat_min $lat_max $dist_min $dist_max $local_input $RADS $TMPDIR "$iono" "$dry" "$wet" "$ib" "$sb" "$ocean" "$load" "$ms" "
    eval $cmd 1>&2
 
    [ "$?" == "0" ] || exit $ERR_MCR
@@ -124,8 +128,10 @@ function main ()
 # publish results
 #   echo $TMPDIR/ALES/*.mat | ciop-publish -m
    echo $TMPDIR/CGDR/*.nc | ciop-publish -m
+   echo $TMPDIR/CGDR_ref/*.nc | ciop-publish -m
 #rm $TMPDIR/ALES/*.mat
 rm $TMPDIR/CGDR/*.nc
+rm $TMPDIR/CGDR_ref/*.nc
    ciop-log "INFO" "Publishing ..."
 nj=$nj+1
 if (($nj==1)); then

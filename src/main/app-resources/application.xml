@@ -6,11 +6,11 @@
       <streamingExecutable>/application/node_A/run.sh</streamingExecutable>
       <defaultParameters>           
       <!--  <parameter id="startdate" title="Start date" abstract="Start date of the requested data used as queryable for the catalogue" scope="runtime" type="opensearch" target="time:start" maxOccurs="1">2009-04-26T08:52:29.000</parameter>
-        <parameter id="enddate" title="End date" abstract="End date of the requested data used as queryable for the catalogue" scope="runtime" type="opensearch" target="time:end" maxOccurs="1">2009-04-26T09:22:29.000</parameter> -->
+        <parameter id="enddate" title="End date" abstract="End date of the requested data used as queryable for the catalogue" scope="runtime" type="opensearch" target="time:end" maxOccurs="1">2009-04-26T09:22:29.000</parameter>  -->
         <parameter id="qbbox" title="Bounding Box (lon_min,lat_min,lon_max,lat_max)" abstract="The bounding box parameter" scope="runtime" type="opensearch" target="geo:box" maxOccurs="1">-13.12,40.95,-8.21,46.81</parameter>
         <parameter id="Mission" title="Mission Name" abstract="Mission Name">j3</parameter>
-	<parameter id="distant_limits" title="Distance limits (km)" abstract="Distance limits to the coast" scope="runtime" maxOccurs="1">-10,1000</parameter>
-<parameter id="ionosphere" title="Ionospheric Correction" abstract="ionospheric correction" scope="runtime" minOccurs="0" maxOccurs="1">
+	<parameter id="distant_limits" title="Distance limits (km)" abstract="Distance limits to the coast" scope="runtime" maxOccurs="1">-10,200</parameter>
+        <parameter id="ionosphere" title="Ionospheric Correction" abstract="ionospheric correction" scope="runtime" minOccurs="0" maxOccurs="1">
           <options>
            <option>iono_gim</option>
            <option>iono_alt_smooth</option>
@@ -21,7 +21,7 @@
            <option>iono_nic09</option>
            <default>iono_gim</default>
           </options>
-        </parameter>
+        </parameter>    
         <parameter id="dry_tropo" title="Dry Tropospheric Correction" abstract="dry tropospheric correction" scope="runtime" minOccurs="0" maxOccurs="1">
           <options>
            <option>dry_tropo_era</option>
@@ -42,7 +42,7 @@
         <parameter id="inv_bar" title="Inverse Barometer Correction" abstract="inverse barometer correction" scope="runtime" minOccurs="0" maxOccurs="1">
           <options>
            <option>inv_bar_mog2d</option>
-	   <option>inv_bar_mog2d_era</option>
+           <option>inv_bar_mog2d_era</option>
            <option>inv_bar_mog2d_mean</option>
            <option>inv_bar_static</option>
            <option>inv_bar_global</option>
@@ -57,7 +57,7 @@
            <default>ssb_tran2012</default>
           </options>
         </parameter>
-        <parameter id="tide_ocean" title="Ocean Tide" abstract="ocean tide" scope="runtime" minOccurs="0" maxOccurs="1">
+        <parameter id="tide_ocean" title="Ocean Tide" abstract="ocean tide" scope="runtime" minOccurs="0" maxOccurs="1"> 
           <options>
            <option>tide_ocean_fes14</option>
            <option>tide_ocean_got410</option>
@@ -68,17 +68,26 @@
         </parameter>
         <parameter id="tide_load" title="Load Tide" abstract="load tide" scope="runtime" minOccurs="0" maxOccurs="1">
           <options>
-           <option>tide_load_fes14</option>
+	  <option>tide_load_fes14</option>
            <option>tide_load_got410</option>
            <option>tide_load_fes04</option>
            <option>tide_load_got48</option>
            <default>tide_load_fes14</default>
           </options>
         </parameter>
-  </defaultParameters>
+       <parameter id="mss" title="Mean Sea Surface" abstract="Mean Sea Surface Model" scope="runtime" minOccurs="0" maxOccurs="1">
+        <options>
+        <option>mss_dtu15</option>
+        <option>mss_dtu13</option>
+        <option>mss_cnescls11</option>
+        <option>mss_cnescls15</option>
+        <default>mss_dtu15</default>
+       </options>
+      </parameter>
+  </defaultParameters>   
   <defaultJobconf>
       <property id="mapred.task.timeout">1800000</property>
-      </defaultJobconf>
+      </defaultJobconf> 
    </jobTemplate>
 </jobTemplates>
   <!--  <jobTemplate id="template_B">
@@ -90,12 +99,12 @@
 	 <property id="ciop.job.max.tasks">1</property>
       </defaultJobconf>
     </jobTemplate> -->
-    <workflow id="workflow" title="ALES Processor for jason3 V1" abstract="This Processor produces SSHA, TWLE, SWH, SIGMA0 from Jason3 mission">
+    <workflow id="workflow" title="ALES Processor for Jason3 V1.1" abstract="This Processor produces SSHA, TWLE, SWH, SIGMA0 from Jason3 mission">
     <workflowVersion>1.0</workflowVersion>
     <node id="node_A">
       <job id="template_A"/> 
       <sources>
-<source refid="string:list" id="input_ref" title="jason3 SGDR data files" abstract="url to the jason3 SGDR NetCDF files" scope="runtime" ></source>
+<source refid="string:list" id="input_ref" title="Data Package" abstract="url to the jason3 SGDR netCDF files" scope="runtime" ></source>
       </sources>
 <!--     </node>
     <node id="node_B">
