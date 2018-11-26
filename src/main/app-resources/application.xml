@@ -9,7 +9,7 @@
         <parameter id="enddate" title="End date" abstract="End date of the requested data used as queryable for the catalogue" scope="runtime" type="opensearch" target="time:end" maxOccurs="1">2009-04-26T09:22:29.000</parameter>  -->
         <parameter id="qbbox" title="Bounding Box (lon_min,lat_min,lon_max,lat_max)" abstract="The bounding box parameter" scope="runtime" type="opensearch" target="geo:box" maxOccurs="1">-13.12,40.95,-8.21,46.81</parameter>
         <parameter id="Mission" title="Mission Name" abstract="Mission Name">j2</parameter>
-	<parameter id="distant_limits" title="Distance limits (km)" abstract="Distance limits to the coast" scope="runtime" maxOccurs="1">-10,1000</parameter>
+	<parameter id="distant_limits" title="Distance limits (km)" abstract="Distance limits to the coast" scope="runtime" maxOccurs="1">-10,200</parameter>
         <parameter id="ionosphere" title="Ionospheric Correction" abstract="ionospheric correction" scope="runtime" minOccurs="0" maxOccurs="1">
           <options>
            <option>iono_gim</option>
@@ -75,6 +75,15 @@
            <default>tide_load_fes14</default>
           </options>
         </parameter>
+       <parameter id="mss" title="Mean Sea Surface" abstract="Mean Sea Surface Model" scope="runtime" minOccurs="0" maxOccurs="1">
+        <options>
+        <option>mss_dtu15</option>
+        <option>mss_dtu13</option>
+        <option>mss_cnescls11</option>
+        <option>mss_cnescls15</option>
+        <default>mss_dtu15</default>
+       </options>
+      </parameter>
   </defaultParameters>   
   <defaultJobconf>
       <property id="mapred.task.timeout">1800000</property>
@@ -90,12 +99,12 @@
 	 <property id="ciop.job.max.tasks">1</property>
       </defaultJobconf>
     </jobTemplate> -->
-    <workflow id="workflow" title="ALES Processor for Jason2 V1" abstract="This Processor produces SSHA, TWLE, SWH, SIGMA0 from Jason2 mission">
+    <workflow id="workflow" title="ALES Processor for Jason2 V1.1" abstract="This Processor produces SSHA, TWLE, SWH, SIGMA0 from Jason2 mission">
     <workflowVersion>1.0</workflowVersion>
     <node id="node_A">
       <job id="template_A"/> 
       <sources>
-<source refid="string:list" id="input_ref" title="jason2 SGDR data files" abstract="url to the jason2 SGDR NetCDF files" scope="runtime" ></source>
+<source refid="string:list" id="input_ref" title="Data Package" abstract="url to the jason2 SGDR netCDF files" scope="runtime" ></source>
       </sources>
 <!--     </node>
     <node id="node_B">
